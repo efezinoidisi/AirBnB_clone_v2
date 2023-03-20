@@ -9,6 +9,8 @@ storage_type = getenv("HBNB_TYPE_STORAGE")
 if storage_type == "db":
     storage = DBStorage()
     storage.reload()
+    print("db")
 else:
     storage = FileStorage()
     storage.reload()
+    print("file")
