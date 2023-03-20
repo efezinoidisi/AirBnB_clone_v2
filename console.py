@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
                 if pline:
                     # check for *args or **kwargs
                     if pline[0] == '{' and pline[-1] == '}'\
-                        and type(eval(pline)) is dict:
+                       and type(eval(pline)) is dict:
                         _args = pline
                     else:
                         _args = pline.replace(',', '')
@@ -140,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
                 value = self.conversion(value)
                 setattr(new_instance, key, value)
 
+        storage.new(new_instance)
         storage.save()
         print(new_instance.id)
 
@@ -225,11 +226,10 @@ class HBNBCommand(cmd.Cmd):
                 return
             for k, v in storage.all().items():
                 if k.split('.')[0] == args:
-                    print_list.append(str(v))
+                    print_list.append(v)
         else:
-            for k, v in storage.all().items():
-                print_list.append(str(v))
-
+            for v in storage.all().values():
+                print_list.append(v)
         print(print_list)
 
     def help_all(self):
@@ -345,6 +345,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             attr_val = attr_val.strip('"').replace('_', ' ')
         return attr_val
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
