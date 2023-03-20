@@ -14,11 +14,11 @@ class BaseModel:
         """Instantiates a new model"""
         if not kwargs:
             self.id = Column(String(60), nullable=False, primary_key=True,
-                    default=str(uuid.uuid4()))
+                             default=str(uuid.uuid4()))
             self.created_at = Column(DateTime, nullable=False,
-                    default=datetime.utcnow())
+                                     default=datetime.utcnow())
             self.updated_at = Column(DateTime, nullable=False,
-                    default=datetime.utcnow())
+                                     default=datetime.utcnow())
         else:
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
