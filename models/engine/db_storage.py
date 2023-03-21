@@ -39,7 +39,7 @@ class DBStorage:
         from models.place import Place
         from models.review import Review
 
-        classes = [State, City]
+        classes = [State, City, User]
         dictionary = {}
         if cls:
             objs = self.__session.query(cls)
