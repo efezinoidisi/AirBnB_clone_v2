@@ -338,7 +338,7 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
     def conversion(self, attr_val):
-        if '.' in attr_val:
+        if "." in attr_val and '@' not in attr_val:
             attr_val = float(attr_val)
         elif attr_val.isdigit():
             attr_val = int(attr_val)
