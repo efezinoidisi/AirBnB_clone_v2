@@ -226,10 +226,10 @@ class HBNBCommand(cmd.Cmd):
                 return
             for k, v in storage.all().items():
                 if k.split('.')[0] == args:
-                    print_list.append(v)
+                    print_list.append(str(v))
         else:
             for v in storage.all().values():
-                print_list.append(v)
+                print_list.append(str(v))
         print(print_list)
 
     def help_all(self):
