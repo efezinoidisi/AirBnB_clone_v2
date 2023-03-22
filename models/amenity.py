@@ -9,4 +9,3 @@ class Amenity(BaseModel, Base):
     """A class that creates different amenities"""
     __tablename__ = 'amenities'
     name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary='place_amenity')
