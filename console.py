@@ -2,6 +2,7 @@
 """ Console Module """
 import cmd
 import sys
+import re
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
@@ -127,18 +128,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        args = new[2].split(" ")
+        keys = re.findall("([A-Za-z0-9_]+)(?==)", new[2])
+        values = re.findall('"(.*?)"', new[2])
         new_instance = HBNBCommand.classes[c_name]()
 
-        if args:
-            for arg in args:
-                values = arg.split("=")
-
-                if len(values) != 2:
-                    continue
-                key, value = values
-                value = self.conversion(value)
-                setattr(new_instance, key, value)
+        if keys and values:
+            for i in range(len(keys)):
+                values[i] = self.conversion(values[i])
+                setattr(new_instance, keys[i], values[i])
 
         storage.new(new_instance)
         storage.save()
