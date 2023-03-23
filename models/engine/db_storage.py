@@ -43,6 +43,9 @@ class DBStorage:
         dictionary = {}
         if cls:
             objs = self.__session.query(cls)
+            for obj in objs:
+                    key = f"{obj.__class__.__name__}.{obj.id}"
+                    dictionary.update({key: obj})
         else:
             for cls_name in classes:
                 objs = self.__session.query(cls_name)
