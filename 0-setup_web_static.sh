@@ -20,7 +20,7 @@ if [ ! -d /data/web_static/releases ] || [ ! -d /data/web_static/releases/test/ 
 fi
 
 # create the directory /data/web_static/shared if it doesn't exist
-if [ ! -d /data/web_static/releases ]; then
+if [ ! -d /data/web_static/shared ]; then
     sudo mkdir /data/web_static/shared/
 fi
 
