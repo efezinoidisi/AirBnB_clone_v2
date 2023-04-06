@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""
-This module contains the fabric script do_pack
+"""This module contains the fabric script do_pack
+which generates a .tgz archive
 """
 from fabric.api import local, task
 from datetime import datetime
