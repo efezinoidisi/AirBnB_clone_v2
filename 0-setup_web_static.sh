@@ -25,7 +25,12 @@ if [ ! -d /data/web_static/shared ]; then
 fi
 
 # create the file /data/web_static/releases/test/index.html if it doesn't exist
-echo "hello world!" | sudo tee /data/web_static/releases/test/index.html
+echo "<html>
+     <head></head>
+     <body>
+	Holberton School
+     </body>
+</html>" | sudo tee /data/web_static/releases/test/index.html
 
 # delete the directory /data/web_static/current if it exists
 if [[ -L /data/web_static/current ]]; then
@@ -40,6 +45,6 @@ sudo chown -R ubuntu:ubuntu /data/
 
 # update nginx to serve the content of /data/web_static/current to hbnb_static
 
-sudo sed -i "s/server_name _;/server_name _;\n\n\tlocation \/hbnb_static {\n\t\talias \/data\/web_static\/current;\n\t\ttry_files \$uri \$uri\/ =404;\n\t}/" /etc/nginx/sites-available/default
+sudo sed -i "s/server_name _;/server_name _;\n\n\tlocation \/hbnb_static {\n\t\talias \/data\/web_static\/current\/;\n\t\ttry_files \$uri \$uri\/ =404;\n\t}/" /etc/nginx/sites-available/default
 
 sudo service nginx restart
