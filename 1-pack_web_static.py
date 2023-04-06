@@ -9,7 +9,7 @@ from datetime import datetime
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
     current_date = datetime.now().strftime("%Y%m%d%H%M%S")
-    filename = "web_static_{}.tgz".format(current_date)
+    filename = "versions/web_static_{}.tgz".format(current_date)
     local('mkdir -p versions')
     result = local('tar -cvzf {} ./web_static'.format(filename))
     if result.return_code == 0:
