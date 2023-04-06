@@ -33,9 +33,10 @@ def do_deploy(archive_path):
     des = '/data/web_static/releases/' + name
     run('mkdir {}'.format(des))
     run('tar -xvzf {} -C {}/'.format(filepath, des))
-    run('rm {}'.format(filepath))
+    run('rm -rf {}'.format(filepath))
     run('rm -rf /data/web_static/current')
     first = 'mv /data/web_static/releases/{}/web_static/*'.format(name)
     run('{} /data/web_static/releases/{}/'.format(first, name, name))
+    run('rm -rf /data/web_static/releases/{}/web_static'.format(name))
     run('ln -s {}/ /data/web_static/current'.format(des))
     return True
