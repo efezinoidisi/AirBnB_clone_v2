@@ -2,12 +2,11 @@
 """This module contains the fabric script do_pack
 which generates a .tgz archive
 """
-from fabric.api import local, task
+from fabric.api import local
 from datetime import datetime
 from pathlib import Path
 
 
-@task
 def do_pack():
     """
     generates a .tgz archive from the contents of the web_static folder
