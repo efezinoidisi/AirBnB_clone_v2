@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""This module contains the fabric script do_pack
-which generates a .tgz archive
+"""This module contains the fabric script do_pack which generates a .tgz
+archive from the contents of the web_static folder
 """
 from fabric.api import local
 from datetime import datetime
-from pathlib import Path
 
 
 def do_pack():
@@ -16,8 +15,6 @@ def do_pack():
     two = f'{cd.hour:02d}{cd.minute:02d}{cd.second:02d}.tgz'
     filename = one + two
     print(filename)
-    path = Path("./versions")
-    if not path.exists():
-        local('mkdir versions')
+    local('mkdir -p versions')
     local(f'tar -cvzf {filename} ./web_static')
     return filename
