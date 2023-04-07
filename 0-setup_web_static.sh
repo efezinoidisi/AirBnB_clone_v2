@@ -45,6 +45,6 @@ sudo chown -R ubuntu:ubuntu /data/
 
 # update nginx to serve the content of /data/web_static/current to hbnb_static
 
-sudo sed -i "s/server_name _;/server_name _;\n\n\tlocation \/hbnb_static {\n\t\talias \/data\/web_static\/current\/;\n\t\ttry_files \$uri \$uri\/ =404;\n\t}/" /etc/nginx/sites-available/default
+sudo sed -i "s/server_name _;/server_name _;\n\n\tlocation \/hbnb_static {\n\t\talias \/data\/web_static\/current\/;\n\t\ttry_files index.html 0-index.html =404;\n\t}/" /etc/nginx/sites-available/default
 
 sudo service nginx restart
