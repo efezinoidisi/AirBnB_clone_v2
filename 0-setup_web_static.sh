@@ -6,24 +6,32 @@ if [ ! -d /etc/nginx ]; then
     sudo apt-get update
     sudo apt-get install nginx -y
     sudo ufw allow "Nginx HTTP"
+    echo "server {
+     listen 80 default_server;
+     listen [::]:80 default_server;
+     add_header X-Served-By $HOSTNAME;
+     root /var/www/html;
+     index index.html index.htm index.nginx-debian.html;
+     server_name _;
+     location /redirect_me {
+     	      return 301 https://javascript.info;
+	      }
+     location / {
+     	      try_files \$uri \$uri/ =404;
+     }
+     error_page 404 /error_page.html;
+     location = /error_page.html {
+     	      root /var/www/html;
+	      internal;
+      }
+}" | sudo tee /etc/nginx/sites-available/default
+    echo "Hello World!" | sudo tee /var/www/html/index.html
+    echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_page.html
     sudo service nginx start
 fi
 
-# create the directories /data and /data/web_static if it doesn't exist
-if [ ! -d /data/ ] || [ ! -d /data/web_static/ ]; then
-    sudo mkdir -p /data/web_static/
-fi
-
-# create the directory /data/web_static/releases if it doesn't exist
-if [ ! -d /data/web_static/releases ] || [ ! -d /data/web_static/releases/test/ ]; then
-    sudo mkdir -p /data/web_static/releases/test/
-fi
-
-# create the directory /data/web_static/shared if it doesn't exist
-if [ ! -d /data/web_static/shared ]; then
-    sudo mkdir /data/web_static/shared/
-fi
-
+# create directories if they don't exist
+sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
 # create the file /data/web_static/releases/test/index.html if it doesn't exist
 echo "<html>
      <head></head>
