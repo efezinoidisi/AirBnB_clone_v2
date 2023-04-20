@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains a single route '/'
+This module contains a two routes '/' and 'hello'
 """
 from flask import Flask
 
@@ -12,6 +12,10 @@ app = Flask(__name__)
 def hello_hbnb():
     """This route returns hello hbnb"""
     return 'Hello HBNB!'
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    return "HBNB"
 
 
 if __name__ == "__main__":
