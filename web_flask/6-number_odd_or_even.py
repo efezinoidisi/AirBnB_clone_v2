@@ -26,7 +26,7 @@ def show_text(text):
 
 
 @app.route('/python', strict_slashes=False)
-@app.route('/python/(<text>)', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def new(text="is cool"):
     updated_text = text.replace('_', ' ')
     return "Python %s" % escape(updated_text)
