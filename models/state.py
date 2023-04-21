@@ -18,4 +18,6 @@ class State(BaseModel, Base):
             """Return the list of City instances with
             state_id equals to the current State.id
             """
-            return [city for city in self.cities]
+            from models import storage
+            from models.city import City
+            return [city for city in storage.all(City).values() if city.state_id == self.id]
