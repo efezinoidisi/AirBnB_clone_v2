@@ -15,8 +15,8 @@ class FileStorage:
 
         if cls and cls.__name__ in self.__classes:
             cls_string = cls.__name__
-            objs = dict(filter(lambda obj: True if cls_string in obj[0] else False,
-                    db.items()))
+            objs = dict(filter(lambda obj: True if cls_string in obj[0]
+                               else False, db.items()))
             return objs
         return db
 
@@ -62,7 +62,7 @@ class FileStorage:
         """Delete an object from __objects"""
         db = self.all()
         if obj is not None:
-            key = f"{obj.__class__.__name__}.{obj.id}"
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
             del db[key]
             self.save()
 
