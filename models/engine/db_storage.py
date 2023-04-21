@@ -87,4 +87,3 @@ class DBStorage:
     def close(self):
         """reload the session and start a new one"""
         self.__session.close()
-        self.reload()
