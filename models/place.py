@@ -4,7 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from os import getenv
-
+from models.amenity import Amenity
 
 association_table = Table('place_amenity', Base.metadata, Column(
     'place_id', String(60), ForeignKey('places.id'), primary_key=True,
@@ -44,7 +44,6 @@ class Place(BaseModel, Base):
         def amenities(self):
             """Returns a list of Amenity instances"""
             from models import storage
-            from models.amenity import Amenity
 
             return [amen for amen in storage.all(Amenity).values()
                     if amen.id in self.amenity_ids]
