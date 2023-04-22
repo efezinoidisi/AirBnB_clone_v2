@@ -6,7 +6,9 @@
   <BODY>
     <H1>States</H1>
     <UL>
-      <LI>{{ data }}</LI>
+      {% for state in data %}
+      <LI>{{ state.id }}: <B>{{ state.name}}</B></LI>
+      {% endfor %}
     </UL>
   </BODY>
 </HTML>

@@ -5,15 +5,15 @@ This module contains a simple flask application
 from flask import Flask, render_template
 from werkzeug.utils import escape
 from models import storage
-
+from models.state import State
 
 app = Flask(__name__)
-data = storage.all()
 
 
 @app.route('/states_list', strict_slashes=False)
 def state_list():
-    return render_template('7-states_list.html')
+    data = storage.all(State).values()
+    return render_template('7-states_list.html', data=data)
 
 
 @app.teardown_appcontext
