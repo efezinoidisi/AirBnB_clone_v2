@@ -17,6 +17,7 @@ env = getenv("HBNB_ENV")
 
 DB = "mysql+mysqldb://{}:{}@{}/{}".format(user, passwd, host, db)
 
+
 class DBStorage:
     """This class defines the database engine"""
     __engine = None
