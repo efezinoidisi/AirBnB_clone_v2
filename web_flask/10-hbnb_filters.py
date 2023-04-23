@@ -3,25 +3,18 @@
 This module contains a simple flask application
 """
 from flask import Flask, render_template
-from werkzeug.utils import escape
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
-@app.route('/states/<id>', strict_slashes=False)
-def states(id=None):
-    data = storage.all(State)
-    keys = data.keys()
-    check = "State.{}".format(id)
-    states = data.values()
-    value = False
-    if check in keys:
-        states = data.get(check)
-        value = True
-    return render_template('9-states.html', states=states, id=id, value=value)
+@app.route('/hbnb_filters', strict_slashes=False)
+def filters():
+    states = storage.all(State).values()
+    amenities = storage.all(Amenity).values()
+    return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
 
 
 @app.teardown_appcontext
