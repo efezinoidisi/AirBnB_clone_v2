@@ -17,7 +17,6 @@ def states(id=None):
     keys = data.keys()
     check = "State.{}".format(id)
     states = data.values()
-    states = sorted(states, key=lambda l: l.name)
     value = False
     if check in keys:
         states = data.get(check)
