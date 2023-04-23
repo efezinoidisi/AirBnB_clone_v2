@@ -13,7 +13,7 @@
 	float: left;
 	height: 100%;
 	width: 25%;
-
+	z-index: 3;
 	line-height: 20px;
 	border-right: 1px solid #DDDDDD;
 }
@@ -23,8 +23,8 @@
 	vertical-align: middle;
 	height: 100%;
 	float: left;
-    width: 25%;
-
+	width: 25%;
+	z-index: 3;
 	line-height: 20px;
 }
 
@@ -33,15 +33,19 @@
 	display: none;
 	background-color: #FAFAFA;
 	width: 100%;
-
 	margin-left: -1px;
 	margin-top: 8px;
 	padding: 25px 0px;
-
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	max-height: 300px;
 	overflow-y: scroll;
+	scrollbar-width: none;
+	z-index: 3;
+}
+
+.popover::-webkit-scrollbar {
+	display: none;
 }
 
 .locations:hover .popover {
@@ -58,19 +62,15 @@ ul {
 	padding-bottom: 20px;
 }
 
-li {
-}	
-
 h2 {
 	font-size: 16px;
-	padding-left: 30px;
-	margin: 0px;
+	padding: 0 1rem;
 }
 
 h3 {
 	font-weight: 600;
 	margin-top: 12px;
-	margin-bottom: 5px;	
+	margin-bottom: 5px;
 	padding-left: 45px;
 }
 
@@ -85,7 +85,7 @@ h4 {
 button {
 	color: #FFFFFF;
 	font-size: 18px;
-	
+
 	height: 48px;
 	width: 20%;
 	background-color: #FF5A5F;
