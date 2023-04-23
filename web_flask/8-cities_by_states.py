@@ -13,12 +13,14 @@ app = Flask(__name__)
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_state():
     data = storage.all(State).values()
-    return render_template('7-states_list.html', data=data)
+    states = sorted(data, key=lambda l: l.name)
+    return render_template('8-cities_by_states.html', data=states)
 
 
 @app.teardown_appcontext
 def close_db(error):
     storage.close()
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
