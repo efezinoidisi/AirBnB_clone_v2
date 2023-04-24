@@ -67,22 +67,22 @@
 						<DIV class="bed_icon"></DIV>
 						<P>{{ place.number_rooms }} Room</P>
 					</DIV>
-					<div class="number_bathrooms">
-						<div class="bath_icon"></div>
-						<p>{{ place.number_bathrooms }} Bathroom</p>
-					</div>
+					<DIV class="number_bathrooms">
+						<DIV class="bath_icon"></div>
+						<P>{{ place.number_bathrooms }} Bathroom</P>
+					</DIV>
 				</DIV>
-				<div class="user"><b>Owner</b>: {{ place.user.first_name }} {{ place.user.last_name }}</div>
-				<div class="description">
+				<DIV class="user"><B>Owner</B>: {{ place.user.first_name }} {{ place.user.last_name }}</DIV>
+				<DIV class="description">
 					{{ place.description|safe }}
-				</div>
+				</DIV>
 			</ARTICLE>
 			{% endfor %}
 		</SECTION>
 	</DIV>
-	<footer>
-		<p>Holberton School</p>
-	</footer>
+	<FOOTER>
+		<P>Holberton School</P>
+	</FOOTER>
 </BODY>
 
 </HTML>
